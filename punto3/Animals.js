@@ -3,9 +3,27 @@ const contenido = document.getElementById('contenido').content
 
 const fragment = document.createDocumentFragment()
 
-function crearCard (){
-  
+function crearCard (animales){
+  animales.forEach(animal => {
+    
+    console.log(animal.name)
+
+    if (animal.type == 'Ave' && animal.age > 10) {
+      contenido.querySelector('#name').textContent = animal.name
+      contenido.querySelectorAll('p')[0].textContent = animal.type
+      contenido.querySelectorAll('p')[1].textContent = animal.age
+      contenido.querySelectorAll('p')[2].textContent = animal.color
+      const clone = contenido.cloneNode(true)
+    fragment.appendChild(clone)
+    }
+
+  });
+  contenedor.appendChild(fragment)
 }
+
+console.log(contenido.querySelector('#name').textContent)
+
+
 
 const animales = [
   {name:"Lobo", type:"Mamifero", age:5,color:"Gris"},
